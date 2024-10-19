@@ -16,6 +16,8 @@ load_dotenv()
 
 logger = logging.getLogger(__name__)
 log = logging.getLogger("werkzeug")
+disnake_log = logging.getLogger("disnake")
+disnake_log.setLevel(logging.ERROR)
 log.disabled = True
 
 class ClientUser(commands.AutoShardedBot):
@@ -109,6 +111,7 @@ def load():
         
         bot  = ClientUser(intents=intents, command_prefix=os.environ.get("PREFIX") or "?", command_sync_flag=command_sync_config, ffmpeg_path=ffmpeg_path)
 
+        bot.remove_command("help")
         bot.load_modules()
         print("-"*40)
         webapp = threading.Thread(target=run_application, daemon = True)

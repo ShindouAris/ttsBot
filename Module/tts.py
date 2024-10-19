@@ -7,7 +7,7 @@ import aiosqlite
 import traceback
 
 import disnake
-from disnake import FFmpegPCMAudio
+from disnake import FFmpegOpusAudio
 from disnake.ext import commands
 from gtts import gTTS
 from asgiref.sync import sync_to_async as s2a
@@ -159,7 +159,7 @@ class TTS(commands.Cog):
         await s2a(process_tts)(content, guild_id, channel_id, convlang)
 
         try:
-            vc.play(FFmpegPCMAudio(f"./data_tts/{guild_id}/{channel_id}_tts.mp3", executable=self.bot.ffmpeg))
+            vc.play(FFmpegOpusAudio(f"./data_tts/{guild_id}/{channel_id}_tts.mp3", executable=self.bot.ffmpeg))
         except disnake.errors.ClientException as e:
             if "ffmpeg.exe was not found." or "ffmpeg was not found." in str(e):
                 await ctx.send(f"FFmpeg not found, plis contact developer for fix idk")

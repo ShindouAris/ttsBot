@@ -16,10 +16,7 @@ load_dotenv()
 
 logger = logging.getLogger(__name__)
 log = logging.getLogger("werkzeug")
-disnakelog, shardlog = logging.getLogger("gateway"), logging.getLogger("shard")
-disnakelog.disabled = True
 log.disabled = True
-shardlog.disabled = True
 
 class ClientUser(commands.AutoShardedBot):
     

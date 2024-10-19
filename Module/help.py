@@ -10,7 +10,7 @@ class Help(commands.Cog):
     async def help(self, ctx: disnake.ApplicationCommandInteraction):
         list_cmds: list = []
         embed = disnake.Embed()
-        embed.title = "Trợ giúp lệnh"
+        embed.title = f"Trợ giúp lệnh - prefix của bot: {self.bot.environ.get('PREFIX', default='?')}"
         txt = ""
         extra = ""
 

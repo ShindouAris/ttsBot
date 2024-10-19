@@ -26,6 +26,7 @@ class ClientUser(commands.AutoShardedBot):
         super().__init__(*args, **kwargs, intents=intents, command_sync_flags=command_sync_flag, command_prefix=command_prefix)
         self.log = logger
         self.ffmpeg = ffmpeg_path
+        self.environ = os.environ
 
     async def on_ready(self):
         logger.info(f"Logged in as {self.user.name} - {self.user.id}")

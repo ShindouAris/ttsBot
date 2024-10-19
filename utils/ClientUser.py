@@ -10,7 +10,8 @@ from dotenv import load_dotenv
 import logging
 import shutil
 import subprocess
-
+from websivi import run_application
+import threading
 load_dotenv()
 
 logger = logging.getLogger(__name__)       
@@ -108,7 +109,9 @@ def load():
 
         bot.load_modules()
         print("-"*40)
-        
+        webapp = threading.Thread(target=run_application, daemon = True)
+        webapp.start()
+
         try:
             bot.run(DISCORD_TOKEN)
         except Exception as e:

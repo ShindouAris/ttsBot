@@ -19,6 +19,7 @@ except FileNotFoundError:
 # Setup logging
 init(autoreset=True)
 
+
 class SpectificLevelFilter(logging.Filter):
     ## Logging filter that allow only the spectified level to be processed
     def __init__(self, level: int):
